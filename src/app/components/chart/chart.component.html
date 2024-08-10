@@ -1,0 +1,23 @@
+<div #containerRef class="container">
+    <ngx-charts-line-chart
+      [results]="chartData"
+      [view]="[containerRef.offsetWidth, 500]"
+      [animations]="animations"
+      [showGridLines]="showGridLines"
+      [roundDomains]="roundDomains"
+      [timeline]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [xAxisTickFormatting]="dateFormatter"
+      [yAxisTickFormatting]="formatYAxis"
+      [yScaleMax]="yMax"
+      [yScaleMin]="yMin">
+      
+      <ng-template #tooltipTemplate let-model="model">
+        <div class="tooltip">
+          {{model.value+'°C'}}
+        </div>
+      </ng-template>
+    </ngx-charts-line-chart>
+    </div>
+    <!-- [autoScale]="true" -->

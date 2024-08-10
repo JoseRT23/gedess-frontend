@@ -1,0 +1,12 @@
+.login-form {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -49%);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  width: 350px;
+  height: 350px;
+}

@@ -1,0 +1,14 @@
+.dashboard-chart {
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+.lastvalue {
+    text-align: center;
+    font-size: 24px;
+    height: 27px;
+    width: 110px;
+    border-radius: 0.3rem;
+    border: 1px solid;
+    outline: none;
+}

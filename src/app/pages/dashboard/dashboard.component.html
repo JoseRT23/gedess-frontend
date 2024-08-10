@@ -1,0 +1,15 @@
+@if(weatherData) {
+<div #containerRef class="container">
+    <div class="dashboard-chart">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <h4>Temperatura</h4>
+                <input [ngStyle]="{color: lastvaluesaved>maxAlertRange||lastvaluesaved<minAlertRange ? 'red' : 'black'}" class="lastvalue" [formControl]="lastvalue" readonly="true">
+            </div>
+        <chart [weatherData]="weatherData"/>
+    </div>
+</div>
+}@else {
+<div style="text-align: center; margin-top: 3rem;">
+    <h2>No hay datos</h2>
+</div>
+}

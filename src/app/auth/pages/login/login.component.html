@@ -1,0 +1,28 @@
+<form class="login-form" [formGroup]="formLogin">
+    <div class="card flex justify-content-center align-items-center">
+        <div class="flex flex-column align-items-center gap-4">
+            <div class="flex flex-column gap-2">
+                <label for="email">Correo electrónico</label>
+                <input 
+                    pInputText
+                    id="email" 
+                    aria-describedby="email-help" 
+                    formControlName="email" />
+            </div>
+            <div class="flex flex-column gap-2">
+                <label for="email">Contraseña</label>
+                <input 
+                    pInputText
+                    id="password" 
+                    aria-describedby="password-help" 
+                    formControlName="password" />
+                </div>
+                @if(errormessage) {
+                    <small style="color: red;">
+                        {{ errormessage }}
+                    </small>
+                }
+                <p-button (click)="login()" label="Iniciar sesión" [raised]="true" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,60 @@
+input[type="date"] {
+    width: 170px;
+    height: 30px;
+    padding: 5px;
+    color: #111;
+    border: 1px solid #645bff;
+    outline: none;
+    border-radius: 5px;
+    font-family: "Oxygen", Arial, Helvetica, sans-serif;
+}
+::-webkit-calendar-picker-indicator {
+    background-color: #ffff;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.search-button {
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+    -6px -6px 10px -1px rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: var(--hover-color);
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+  
+/* Tablet styles */
+@media only screen and (max-width: 576px) {
+    input[type="date"]{
+        width: 150px;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+}

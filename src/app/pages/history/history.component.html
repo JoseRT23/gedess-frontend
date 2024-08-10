@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div style="margin-top: 5rem;">
+    <p style="padding: 20px 0;">Busca el historico de temperaturas entre dos fechas, no mayor a un mes.</p>
+    <div class="filters">
+      <input type="date" [formControl]="startdate">
+      <input type="date" [formControl]="enddate">
+
+      <button class="search-button" (click)="onSearch()">Buscar</button>
+      @if(weatherData.length>0) {
+      <button class="search-button" (click)="clear()">Limpiar</button>
+      }
+
+      @if(status==='ERROR') {
+      <p style="width: 100%; text-align: center; color: red; margin-top: 10px;">{{errormessage}}</p>
+      }
+    </div>
+  </div>
+
+  @if(weatherData.length>0){
+  <div class="dashboard-chart">
+    <div #containerRef class="container">
+      <h4 style="padding: 20px 0;">Temperatura</h4>
+      <chart [weatherData]="weatherData" />
+    </div>
+  </div>
+  }
+</div>
