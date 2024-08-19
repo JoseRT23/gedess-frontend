@@ -25,7 +25,10 @@ export class AuthService {
     return this._http.post(url, credentials);
   }
 
-  public register() {}
+  public register(user: any) {
+    const url = `${this._baseUrl}auth/register`;
+    return this._http.post(url, user);
+  }
 
   public closeSesion() {
     localStorage.removeItem('user');

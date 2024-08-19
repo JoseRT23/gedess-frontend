@@ -7,8 +7,13 @@
             <ul class="list">
                 <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
                 <li><a [routerLink]="['/history']">Historico</a></li>
+            </ul>
+        </div>
+        <div class="menu">
+            <ul class="list">
                 <li (click)="showAlertsDialog()"  pTooltip="Alertas" tooltipPosition="bottom"><i class="pi pi-bell" style="font-size: 1.1rem"></i></li>
                 <li (click)="showParamsDialog()" pTooltip="Configuración" tooltipPosition="bottom"><i class="pi pi-cog" style="font-size: 1.1rem"></i></li>
+                <li style="display: flex; gap: 0.3rem;"><i class="pi pi-user" style="font-size: 1.1rem;"></i>{{_authService.currentUser().username}}</li>
                 <li (click)="closeSesion()" pTooltip="Cerrar sesión" tooltipPosition="bottom"><i class="pi pi-sign-out" style="font-size: 1.1rem"></i></li>
             </ul>
         </div>
@@ -20,19 +25,19 @@
         <form [formGroup]="formConfig">
             <div class="flex flex-column gap-2 mb-2">
                 <label class="w-full"  for="username">Valor mínimo alerta</label>
-                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="min_value"/> 
+                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="min_alert_value"/> 
             </div>
             <div class="flex flex-column gap-2 mb-2">
                 <label for="username">Valor máximo alerta</label>
-                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="max_value"/> 
+                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="max_alert_value"/> 
             </div>
             <div class="flex flex-column gap-2 mb-2">
                 <label for="username">Valor mínimo gráfica</label>
-                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="minchart"/> 
+                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="min_chart_value"/> 
             </div>
             <div class="flex flex-column gap-2 mb-2">
                 <label for="username">Valor máximo gráfica</label>
-                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="maxchart"/> 
+                <p-inputNumber styleClass="w-full" showButtons="true" mode="decimal" [min]="1" [max]="100" formControlName="max_chart_value"/> 
             </div>
         </form>
         <div class="flex justify-content-end gap-2 mt-4">
@@ -63,6 +68,6 @@
     </p-dialog>
 </div>
 
-<div class="card flex justify-content-center gap-2">
+<!-- <div class="card flex justify-content-center gap-2">
     <p-toast position="bottom-right" key="br" />
-</div>
+</div> -->
