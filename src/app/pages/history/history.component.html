@@ -3,8 +3,14 @@
   <div style="margin-top: 5rem;">
     <p style="padding: 20px 0;">Busca el historico de temperaturas entre dos fechas, no mayor a un mes.</p>
     <div class="filters">
-      <input type="date" [formControl]="startdate">
-      <input type="date" [formControl]="enddate">
+      <div>
+        <label for="buttondisplay" class="font-bold block mb-2"> Fecha inicial </label>
+        <input type="date" [formControl]="startdate">
+      </div>
+      <div>
+        <label for="buttondisplay" class="font-bold block mb-2"> Fecha final </label>
+        <input type="date" [formControl]="enddate">
+      </div>
 
       <button class="search-button" (click)="onSearch()">Buscar</button>
       @if(weatherData.length>0) {
@@ -19,9 +25,17 @@
 
   @if(weatherData.length>0){
   <div class="dashboard-chart">
-    <div #containerRef class="container">
-      <h4 style="padding: 20px 0;">Temperatura</h4>
-      <chart [weatherData]="weatherData" />
+    <div class="container">
+      <div class="flex align-items-center gap-3">
+        <h4 style="padding: 20px 0;">Temperatura</h4>
+        <button class="download-buttons" (click)="downloadCsv()" pTooltip="Descargar csv" tooltipPosition="bottom">
+          <i class="pi pi-file-excel"></i>
+        </button>
+        <button class="download-buttons" (click)="downloadPdf()" pTooltip="Descargar pdf" tooltipPosition="bottom">
+          <i class="pi pi-file-pdf"></i>
+        </button>
+      </div>
+      <chart #historyChart [weatherData]="weatherData" />
     </div>
   </div>
   }

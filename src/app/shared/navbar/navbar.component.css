@@ -1,10 +1,13 @@
 .navbar {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
     padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    top: 10px;
 }
 
 .navbar a { 
@@ -36,7 +39,7 @@
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
     .menu {
         width: 100%;
         max-height: 0;
@@ -47,6 +50,10 @@
         flex-direction: column;
         align-items: center;
         padding: 20px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
     }
 
     .navbar label {

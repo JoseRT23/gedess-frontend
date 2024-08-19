@@ -39,35 +39,42 @@ export class WeatherService {
 
   public saveConfiguration(data: any): Observable<any> {
     const url = `${this._baseUrl}parameters`;
-    return this._http.post(url, data);
+    return this._http.post(url, data).pipe(
+      tap(res => this._currentParams.set(data))
+    );
   }
 
-  public updateConfiguration(data: any): Observable<IParameter> {
-    const url = `${this._baseUrl}parameters`;
-    //return this._http.put(url, data);
+  public updateConfiguration(idparameter: any, data: any): Observable<IParameter> {
+    const url = `${this._baseUrl}parameters/${idparameter}`;
     return this._http.put<IParameter>(url, data).pipe(
       tap((res) => this._currentParams.set(res))
     );
   }
 
-  public getParameters(): Observable<IParameter> {
-    const url = `${this._baseUrl}parameters/1`;
+  public getParameters(iduser: any): Observable<IParameter> {
+    const url = `${this._baseUrl}parameters/${iduser}`;
     return this._http.get<IParameter>(url).pipe(
       tap((data) => this._currentParams.set(data))
     );
   }
 
-  public getAlerts(): Observable<any> {
-    const url = `${this._baseUrl}alerts`;
+  public getAlerts(iduser: any): Observable<any> {
+    const url = `${this._baseUrl}alerts/${iduser}`;
     return this._http.get<any>(url);
+  }
+
+  public saveAlert(alert: any): Observable<any> {
+    const url = `${this._baseUrl}alerts`;
+    return this._http.post<any>(url, alert);
   }
 
   public validateDates(date1: Date, date2: Date) {
     // Asegúrate de que fecha1 sea siempre la más antigua
     if (date1 > date2) {
-        var temp = date1;
-        date1 = date2;
-        date2 = temp;
+      return  {
+        error: "La fecha inicial no puede ser mayor a la final",
+        isSucces: false
+      }
     }
 
     var year1 = date1.getFullYear();
@@ -80,7 +87,28 @@ export class WeatherService {
     var diffMonths = month2 - month1 + diffYears * 12;
 
     // Verifica si la diferencia es mayor a 1 mes
-    return diffMonths > 1 || (diffMonths === 1 && date2.getDate() > date1.getDate());
-}
+    if (diffMonths > 1 || (diffMonths === 1 && date2.getDate() > date1.getDate())) {
+      return  {
+        error: "Las fechas no pueden ser mayores a un mes",
+        isSucces: false
+      }
+    }
+    return {
+      error: null,
+      isSuccess: true
+    };
+  }
+
+  downloadCsv(startdate: string, enddate: string): Observable<Blob> {
+    const url = `${this._baseUrl}data/download-excel?startdate=${startdate}&enddate=${enddate}`;
+    return this._http.get(url, { responseType: 'blob' });
+  }
+
+  downloadPdf(imageData: any): Observable<Blob> {
+    //?startdate=${startdate}&enddate=${enddate}
+    const url = `${this._baseUrl}data/download-pdf`;
+    return this._http.post(url, { image: imageData }, { responseType: 'blob' });
+
+  }
 
 }

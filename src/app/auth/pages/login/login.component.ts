@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { InputTextModule } from 'primeng/inputtext';
 import { AuthService } from '../../services/auth.service';
 import { ButtonModule } from 'primeng/button';
-import { catchError } from 'rxjs';
-import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule],
+  imports: [FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -30,6 +30,7 @@ export class LoginComponent {
     this.errormessage = '';
     if (this.formLogin.invalid) {
       this.errormessage = 'Datos ingresados incompletos';
+      return;
     }
 
     const credentials = {
@@ -38,16 +39,15 @@ export class LoginComponent {
     }
 
     this._authService.login(credentials)
-      .pipe(
-        catchError(err => this.errormessage = err.error.message)
-      )
-      .subscribe(user => {
-        if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this._authService.setCurrentUser();
-          this._router.navigate(['dashboard']);
-        }
-      });
-    
+    .subscribe({
+      next: (user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this._authService.setCurrentUser();
+        this._router.navigate(['dashboard']);
+      },
+      error: (error) => {
+        this.errormessage = error.error.message;
+      }
+    });
   }
 }

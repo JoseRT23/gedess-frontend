@@ -37,7 +37,34 @@ input[type="date"] {
     cursor: pointer;
 }
 
+.download-buttons {
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+    -6px -6px 10px -1px rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 0.5em 0.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    cursor: pointer;
+    height: 44px;
+}
+
 .search-button:hover {
+    background-color: var(--hover-color);
+}
+
+.download-buttons:hover {
     background-color: var(--hover-color);
 }
 

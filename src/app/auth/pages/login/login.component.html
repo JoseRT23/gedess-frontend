@@ -22,7 +22,12 @@
                         {{ errormessage }}
                     </small>
                 }
-                <p-button (click)="login()" label="Iniciar sesión" [raised]="true" />
+                <button class="submit-button " (click)="login()" label="Iniciar sesión">Inicia sesión</button>
+
+                <p class="signup-link">
+                    ¿No tienes una cuenta?
+                    <a [routerLink]="['../register']">Registrate</a>
+                </p>
         </div>
     </div>
 </form>
