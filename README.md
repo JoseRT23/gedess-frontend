@@ -1,7 +1,7 @@
 
 # Gedess frontend
 
-Proyecto desarrollado con la versión 17.3.8. de Angular, para el grupo de estudio NAME
+Proyecto desarrollado con la versión 17.3.8. de Angular, para el grupo de estudio GEDESS (Grupo de estudio de soluciones de software).
 
 ## Instalación
 
