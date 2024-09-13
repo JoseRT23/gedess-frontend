@@ -30,7 +30,7 @@ Para ejecutar el proyecto se puede realizar con cualquiera de los siguientes com
 ```
 
 Luego de ejecutarlos el proyecto estará corriendo en la siguiente url: http://localhost:4200
-## Features
+## Características
 
 - SocketIO para comunicación en tiempo real.
 - Gráficas de ngx-charts.
