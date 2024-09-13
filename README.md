@@ -1,27 +1,39 @@
-# Fronted
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+# Gedess frontend
 
-## Development server
+Proyecto desarrollado con la versión 17.3.8. de Angular, para el grupo de estudio NAME
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Instalación
 
-## Code scaffolding
+Instalar gedess-frontend com [npm](https://www.npmjs.com/) de la siguiente manera,
+se debe tener el [CLI](https://v17.angular.io/cli) de Angular instalado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+  - Clonar proyecto
+    git clone https://github.com/JoseRT23/gedess-frontend.git
+  
+  - Ingresar a la carpeta
+    cd gedess-frontend
 
-## Build
+  - Instalar dependencias
+    npm install ó npm install --force 
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Ejecución
 
-## Running unit tests
+Para ejecutar el proyecto se puede realizar con cualquiera de los siguientes comandos.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+    ng s -o
 
-## Running end-to-end tests
+    npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Luego de ejecutarlos el proyecto estará corriendo en la siguiente url: http://localhost:4200
+## Features
 
-## Further help
+- SocketIO para comunicación en tiempo real.
+- Gráficas de ngx-charts.
+- Diseño responsivo.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
