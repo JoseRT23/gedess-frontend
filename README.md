@@ -3,6 +3,25 @@
 
 Proyecto desarrollado con la versión 17.3.8. de Angular, para el grupo de estudio GEDESS (Grupo de estudio de soluciones de software).
 
+```bash
+├── README.md
+├── src
+|  └── app
+|     └── auth: En esta carpeta se encuentra todo lo referente al modulo de autenticación
+|     └── components/chart: En esta carpeta esta el componente de la grafica que se usa en 
+|                           la aplicación
+|     └── pages: En esta carpeta estan lo referente a la pagina de dashboard y historico
+|     └── services: En esta carpeta estan los servicios que se conectan con la API
+|     └── shared: En esta carpeta estan piezas de código que se usan en toda la aplicación
+|     └── app.component.css
+|     └── app.component.html
+|     └── app.component.ts
+|     └── app.config.ts: Punto de inicio de la aplicación
+|     └── app.routes.ts: En este archivo esta la configuración de las rutas de la app
+|  └── assets
+└── 
+```
+
 ## Instalación
 
 Instalar gedess-frontend com [npm](https://www.npmjs.com/) de la siguiente manera,
