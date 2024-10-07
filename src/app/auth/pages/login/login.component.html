@@ -22,6 +22,11 @@
                         {{ errormessage }}
                     </small>
                 }
+                @if(this.formLogin.get('email')?.hasError('pattern')) {
+                    <small style="color: red;">
+                        El correo electrónico ingresado no tiene formato correcto
+                    </small>
+                }
                 <button class="submit-button " (click)="login()" label="Iniciar sesión">Inicia sesión</button>
 
                 <p class="signup-link">

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { InputTextModule } from 'primeng/inputtext';
 import { AuthService } from '../../services/auth.service';
 import { ButtonModule } from 'primeng/button';
-import { catchError, throwError } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -15,8 +14,10 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent {
 
+  public _pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
   formLogin: FormGroup = this._fb.nonNullable.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern(this._pattern)]],
     password: ['', Validators.required],
   });
 
@@ -28,6 +29,8 @@ export class LoginComponent {
 
   public login(): void {
     this.errormessage = '';
+    if (this.formLogin.get('email')?.hasError('pattern')) return;       
+    
     if (this.formLogin.invalid) {
       this.errormessage = 'Datos ingresados incompletos';
       return;
